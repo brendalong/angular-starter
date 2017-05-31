@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular JS with Simple Controller</title>
+	<meta charset="utf-8">
+</head>
+<body ng-app="SongApp">
+
+  
+    
+	<div ng-controller="BasicCtrl">
+    <h1>{{ listID }}</h1>
+    <div ng-repeat="song in songs">
+      <a href="#/songs/{{ song.id }}">{{ song.title }}</a> by {{ song.artist }} on the album: <em>{{ song.album }}</em>
+    </div>
+    
+	
+
+  <h2>Add a Song</h2>
+
+  <label>Title:</label>
+  <input type="text" ng-model="newTitle">
+  <!-- connected to the app data and html view -->
+  <p>User adds new title: <strong>{{newTitle}}</strong></p>
+
+</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<script>
+		var app = angular.module('SongApp', []);
+
+
+		app.controller('BasicCtrl', function($scope) {
+
+        $scope.listID = "Songs for me, Chief.";
+        $scope.newTitle = "put it here";
+    		$scope.songs = [
+          {title: "The Walk",
+            id:104,
+            artist: "Mayer Hawthorne",
+            album: "How Do You Do"
+          },
+          {"title": "Medicine",
+            id:307,
+            "artist": "Grace Potter",
+            "album": "Grace Potter and the Nocturnals"
+          },
+          {"title": "Legs",
+            id:22,
+            "artist": "ZZ Top",
+            "album": "Eliminator"
+          }
+        ]
+		});
+
+	</script>
+</body>
+</html>
